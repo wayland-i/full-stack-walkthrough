@@ -1,0 +1,15 @@
+header {
+    background-image: url("assets/books.png");
+    height: 10%;
+    opacity: 0.8;
+    border-top: solid;
+    border-width: 30px;
+    border-color: #103f22;
+}
+
+header div h1, header div h2 {
+    text-align: center;
+    color: aliceblue;
+    text-shadow: 2px 4px #252525;
+    font-family: Verdana;
+}
