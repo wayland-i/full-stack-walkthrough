@@ -14,8 +14,8 @@ function App() {
     .then((data) => setItems(data))
   }, [])
 
-  const renderDogList = () => {
-    return <DogList></DogList>
+  const renderDogList = (items) => {
+    return <DogList items={items}></DogList>
   }
 
   return (
@@ -23,7 +23,7 @@ function App() {
       <Header></Header>
       <h1>Dogs!</h1>
       {/* <DogList items={items}></DogList> */}
-      {renderDogList()}
+      {renderDogList(items)}
     </>
   )
 }
