@@ -1,0 +1,16 @@
+{
+  "items": [
+    {
+      "id" : 1,
+      "dog" : "breed: golden"
+    },
+    {
+      "id" : 2,
+      "dog" : "breed: poodle"
+    },
+    {
+      "id" : 3,
+      "dog" : "breed: bernese"
+    }
+  ]
+}
