@@ -1,6 +1,7 @@
 import './App.css'
 import './components/Header'
 import Header from './components/Header'
+// import DogList from './components/DogList'
 import DogList from './components/DogList'
 import { useEffect, useState } from 'react'
 
