@@ -16,6 +16,8 @@ function App() {
       <div className='tile'>item</div>
       <div className='tile'>item</div>
       <div className='tile'>item</div>
+      <div className='tile'>item</div>
+      <div className='tile'>item</div>
     </div>
   )
 }
