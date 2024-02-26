@@ -11,7 +11,7 @@
     },
     {
       "id": 2,
-      "name": "Book Her #3",
+      "name": "Book Her #2",
       "about": "The app takes you (the Casting Director) through a series of questions to determine the Models you need for your next Project.",
       "phase": 4,
       "link": "https://bookher.netlify.app/new_project",
@@ -108,6 +108,16 @@
       "name": "NEW pRoJeCt",
       "about": "a project i made after returning from beacon",
       "id": 31
+    },
+    {
+      "name": "",
+      "about": "",
+      "id": 32
+    },
+    {
+      "name": "",
+      "about": "",
+      "id": 33
     }
   ]
 }

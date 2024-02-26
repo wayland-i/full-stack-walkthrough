@@ -1,35 +1,33 @@
 import { useState } from "react"
 
-export const EditItemForm = () => {
+export const EditItemForm = ({itemToEdit, submitEdit}) => {
 
-
-    const initialState = {name: "", about: ""}
-
-    const [formData, setFormData] = useState(initialState)
+    const [formData, setFormData] = useState(itemToEdit)
 
     const handleOnChange = (e) => {
+
         const {name, value} = e.target
 
         setFormData({...formData, [name]: value})
     }
 
-    // const handleOnSubmit = (e) => {
-    //     e.preventDefault()
-    //     onAddProject(formData)
-    //     setFormData(initialState)
-    // }
+    const handleOnSubmit = (e) => {
+        e.preventDefault()
+
+        submitEdit(formData)
+    }
 
 
   return (
     <form className="item-form" onSubmit={handleOnSubmit}>
         <h2>Edit Item Form</h2>
-        <input placeholder="Project Name..."
-            onChange={handleOnChange} type="text" 
+        <input 
+            onChange={handleOnChange} 
+            type="text" 
             name="name" 
             id="name"
             value={formData.name}/>
         <input 
-            placeholder="about..." 
             onChange={handleOnChange} 
             type="text" 
             name="about" 

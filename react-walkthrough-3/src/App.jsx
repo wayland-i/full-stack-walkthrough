@@ -8,7 +8,7 @@ import { EditItemForm } from './components/EditItemForm'
 function App() {
 
   const [items, setItems] = useState([])
-  const [editing, setEditing] = useState(false)
+  const [itemToEdit, setItemToEdit] = useState(null)
 
   //Fetch Items
   useEffect(() => {
@@ -42,12 +42,32 @@ function App() {
 
   //EDIT START
   const onHandleEdit = (id) => {
-    console.log("accessing edit")
-    console.log(id)
-    setEditing((editing) => !editing)
 
+    items.map(item => {
+      if (item.id == id) {
+        setItemToEdit(item)
+      }
+    })
 
   }
+
+  const submitEdit = (itemToEdit) => {
+    console.log("submitting")
+    console.log(itemToEdit.id)
+
+    console.log(`http://localhost:4000/projects/${itemToEdit.id}`)
+
+    fetch(`http://localhost:4000/projects/${itemToEdit.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(itemToEdit)
+    })
+  }
+
+
+
   //EDIT END
 
   //DELETE START
@@ -72,7 +92,7 @@ function App() {
   return (
     <div className='app'>
       <Header/>
-      {editing ? <EditItemForm /> : <ItemForm onAddProject={onAddProject}/>}
+      {itemToEdit ? <EditItemForm itemToEdit={itemToEdit} submitEdit={submitEdit}/> : <ItemForm onAddProject={onAddProject}/>}
       {renderList(items)}
     </div>
   )
