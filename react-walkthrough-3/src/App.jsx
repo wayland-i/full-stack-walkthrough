@@ -15,7 +15,7 @@ function App() {
     fetch('http://localhost:4000/projects')
     .then(res => res.json())
     .then(data => setItems(data))
-  }, [])
+  }, [itemToEdit])
   
   // Render List Component with Items
   const renderList = (items) => {
@@ -64,6 +64,20 @@ function App() {
       },
       body: JSON.stringify(itemToEdit)
     })
+    .then(res => res.json)
+    .then(editedItem => {
+      setItems((items) => {
+        return items.map(item => {
+          if (item.id === editedItem.id) {
+            return editedItem
+          }
+          else {
+            return item
+          }
+        })
+      })
+    })
+    setItemToEdit(null)
   }
 
 
