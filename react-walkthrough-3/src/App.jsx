@@ -3,10 +3,12 @@ import './App.css'
 import { Header } from './components/Header'
 import { ItemForm } from './components/ItemForm'
 import { List } from './components/List'
+import { EditItemForm } from './components/EditItemForm'
 
 function App() {
 
   const [items, setItems] = useState([])
+  const [editing, setEditing] = useState(false)
 
   //Fetch Items
   useEffect(() => {
@@ -18,7 +20,7 @@ function App() {
   // Render List Component with Items
   const renderList = (items) => {
     if (items !== undefined) {
-      return <List items={items} onHandleDelete={onHandleDelete}></List>
+      return <List items={items} onHandleDelete={onHandleDelete} onHandleEdit={onHandleEdit}></List>
     }
   }
 
@@ -37,6 +39,16 @@ function App() {
     }})
   }
   //ADD END
+
+  //EDIT START
+  const onHandleEdit = (id) => {
+    console.log("accessing edit")
+    console.log(id)
+    setEditing((editing) => !editing)
+
+
+  }
+  //EDIT END
 
   //DELETE START
   const onHandleDelete = (id) => {
@@ -60,7 +72,7 @@ function App() {
   return (
     <div className='app'>
       <Header/>
-      <ItemForm onAddProject={onAddProject}/>
+      {editing ? <EditItemForm /> : <ItemForm onAddProject={onAddProject}/>}
       {renderList(items)}
     </div>
   )
