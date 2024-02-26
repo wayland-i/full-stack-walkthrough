@@ -8,18 +8,21 @@ function App() {
 
   const [items, setItems] = useState([])
 
+  //Fetch Items
   useEffect(() => {
     fetch('http://localhost:4000/projects')
     .then(res => res.json())
     .then(data => setItems(data))
   }, [])
   
+  // Render List Component with Items
   const renderList = (items) => {
     if (items !== undefined) {
-      return <List items={items}></List>
+      return <List items={items} onHandleDelete={onHandleDelete}></List>
     }
   }
 
+  //ADD START
   const onAddProject = (project) => {
     fetch('http://localhost:4000/projects', {
       method: "POST",
@@ -33,6 +36,26 @@ function App() {
         setItems((items) => [...items, project])
     }})
   }
+  //ADD END
+
+  //DELETE START
+  const onHandleDelete = (id) => {
+    console.log("accessing delete")
+    console.log(id)
+    fetch(`http://localhost:4000/projects/${id}`, {
+            method: 'DELETE'
+    })
+    .then(setItems((items) => {
+      return items.filter(item => {
+      if (item.id !== id) {
+        return item
+      } 
+      else {
+        return null
+      }
+    })}))
+  }
+  //DELETE END
 
   return (
     <div className='app'>

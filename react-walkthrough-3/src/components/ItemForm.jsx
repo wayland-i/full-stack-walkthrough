@@ -3,10 +3,9 @@ import { useState } from "react"
 
 export const ItemForm = ({onAddProject}) => {
 
-    const [formData, setFormData] = useState({
-        name: "",
-        about: ""
-    })
+    const initialState = {name: "", about: ""}
+
+    const [formData, setFormData] = useState(initialState)
 
     const handleOnChange = (e) => {
         const {name, value} = e.target
@@ -17,11 +16,12 @@ export const ItemForm = ({onAddProject}) => {
     const handleOnSubmit = (e) => {
         e.preventDefault()
         onAddProject(formData)
+        setFormData(initialState)
     }
 
   return (
     <form className="item-form" onSubmit={handleOnSubmit}>
-        <h2>Item Form</h2>
+        <h2>Add Item Form</h2>
         <input placeholder="Project Name..."
             onChange={handleOnChange} type="text" 
             name="name" 
